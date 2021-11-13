@@ -8,11 +8,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import HelloWorld from '@/components/HelloWorld.vue';
+import HerosApi from '@/models/HeroApi';
 
 export default defineComponent({
   name: 'Home',
   components: {
     HelloWorld,
+  },
+  async mounted() {
+    console.log(await HerosApi.getHeroById('69'));
   },
 });
 </script>
