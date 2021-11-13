@@ -5,11 +5,19 @@
       <div id="search-container">
 
           <font-awesome-icon
-            class="fas fa-camera fa-sm"
+            v-if="!inputIsFocused"
+            class="fas fa-camera fa-sm search-icon"
             icon="search"
           />
 
-          <input type="text" v-model="search" placeholder="Search..." />
+          <input
+          v-model="search"
+          @click="flipFocus"
+          @blur="flipFocus"
+          placeholder="Search..."
+          type="text"
+          />
+
           <button v-if="searchPhraseIsThere" @click="searchByName">Search</button>
       </div>
     </div>
@@ -26,11 +34,11 @@ export default defineComponent({
   data() {
     return {
       search: '',
+      inputIsFocused: false,
     };
   },
   computed: {
     searchPhraseIsThere() {
-      console.log('this', this.search);
       if (this.search.length > 0) {
         return true;
       }
@@ -41,6 +49,9 @@ export default defineComponent({
   methods: {
     async searchByName() {
       console.log(await HerosApi.getHeroByName(this.search));
+    },
+    flipFocus() {
+      this.inputIsFocused = !this.inputIsFocused;
     },
   },
 
@@ -62,6 +73,10 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.search-icon {
+  margin-right: -20px;
 }
 
 ::placeholder {
