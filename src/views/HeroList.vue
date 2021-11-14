@@ -1,13 +1,12 @@
 <template>
   <div id="main-container">
     <div id="friends-list">
-      <HeroListItem />
 
       <div id="search-container">
 
           <font-awesome-icon
             v-if="!inputIsFocused"
-            class="fas fa-camera fa-sm search-icon"
+            class="fas fa-sm search-icon"
             icon="search"
           />
 
@@ -22,7 +21,11 @@
           <button v-if="searchPhraseIsThere" @click="searchByName">Search</button>
       </div>
       <div v-for="hero in heros" :key="hero.id">
-          {{hero}}
+        <div style="margin: 48px;">
+
+                <HeroListItem v-if="hero" :hero="hero"/>
+        </div>
+
       </div>
     </div>
 

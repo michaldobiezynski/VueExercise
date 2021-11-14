@@ -6,13 +6,13 @@
         <div class="card">
           <div class="header">
             <div class="avatar">
-              <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="">
+              <img :src="hero.image.url" alt="">
             </div>
           </div>
           <div class="card-body">
             <div class="user-meta has-text-centered">
-              <h3 class="username">Helen Miller</h3>
-              <h5 class="position">Accountant</h5>
+              <h3 class="username">{{ fullName }}</h3>
+              <h5 class="position">{{ hero.work.occupation }}</h5>
             </div>
             <div class="user-bio has-text-centered">
               <p>Helen Miller is an accountant at the Acme Inc comany. She works very hard.</p>
@@ -25,19 +25,36 @@
       </div>
     </div>
   </div>
-  <a href="https://cssninja.io" class="link-button">
-    <img src="https://image.ibb.co/dR3ZRm/cssninja_icon_white.png">
-  </a>
+
+          <font-awesome-icon
+            v-if="!inputIsFocused"
+            class="fas fa-sm expand-icon"
+            icon="chevron-down"
+          />
+
 </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { IHero } from '@/models/IHero';
 
 export default defineComponent({
   name: 'HeroListItem',
   props: {
     msg: String,
+    hero: Object as () => IHero,
+  },
+  data() {
+    return {
+      fullName: '',
+    };
+  },
+
+  mounted() {
+    console.log('hero', this.hero);
+    this.fullName = this.hero?.biography['full-name'] ?? '';
+    console.log('hero.biography.full-name', this.hero?.biography['full-name']);
   },
 });
 </script>
@@ -67,15 +84,16 @@ $muted: #999;
       height: 120px;
       background: $primary;
       .avatar {
-        width: 80px;
-        height: 100%;
+        width: 10px;
+        height: 10px;
         position: relative;
         margin: 0 auto;
         img {
+            width: 150px;
+        height: 150px;
           display: block;
           border-radius: 50%;
           position: absolute;
-          bottom: -42px;
           border: 4px solid white;
         }
       }
@@ -116,8 +134,7 @@ $muted: #999;
   }
 }
 
-//Css Ninja link
-.link-button {
+.expand-icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -135,7 +152,7 @@ $muted: #999;
     display: block;
   }
   &:hover {
-    transform: scale(1.1) rotate(180deg);
+    transform: scale(1.1) rotate(360deg);
     background: $secondary;
   }
 }
