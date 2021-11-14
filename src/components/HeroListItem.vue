@@ -1,37 +1,28 @@
 <template>
 <div class="section">
-  <div class="container">
-    <div class="columns">
       <div class="column">
         <div class="card">
           <div class="header">
-            <div class="avatar">
               <img :src="hero.image.url" alt="">
-            </div>
           </div>
-          <div class="card-body">
-            <div class="user-meta has-text-centered">
-              <h3 class="username">{{ fullName }}</h3>
-              <h5 class="position">{{ hero.work.occupation }}</h5>
-            </div>
-            <div class="user-bio has-text-centered">
-              <p>Helen Miller is an accountant at the Acme Inc comany. She works very hard.</p>
-            </div>
-            <div class="action has-text-centered">
-              <a href="#" class="button is-small">View profile</a>
-            </div>
+            <div>
+              <h5 style="text-align: left; margin-left: 16px; margin-top: 32px;">Name</h5>
+              <h3 class="hero-details">{{ hero.name }}</h3>
+              <h5 style="text-align: left; margin-left: 16px;">Full name</h5>
+              <h3 class="hero-details">{{ fullName }}</h3>
+              <h5 style="text-align: left; margin-left: 16px;">Occupation</h5>
+              <h5 class="hero-details">{{ hero.work.occupation }}</h5>
+
+              <button class="button">View profile</button>
+
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
           <font-awesome-icon
             v-if="!inputIsFocused"
             class="fas fa-sm expand-icon"
             icon="chevron-down"
           />
-
 </div>
 </template>
 
@@ -66,71 +57,59 @@ $secondary: #00D1B2;
 $section: #ededed;
 $muted: #999;
 
-.columns {
-  margin-top: 0;
+h3 {
+  padding-bottom: 0;
+}
+h5 {
+  padding-top: 0;
+}
+
+.hero-details {
+  color: $primary;
 }
 
 .section {
   background-color: $section;
   min-height: 500px;
+  width: 100%;
   position: relative;
   .card {
     border-radius: 6px;
     overflow:hidden;
-    max-width: 300px;
-    max-height: 380px;
+    max-height: 100%;
+    width: 300px;
     margin: 0 auto;
     .header {
       height: 120px;
       background: $primary;
-      .avatar {
-        width: 10px;
-        height: 10px;
-        position: relative;
-        margin: 0 auto;
+      display: flex;
+      align-content: center;
+      justify-content: center;
         img {
-            width: 150px;
-        height: 150px;
+          width: 150px;
+          height: 150px;
           display: block;
           border-radius: 50%;
-          position: absolute;
           border: 4px solid white;
         }
-      }
     }
-    .card-body {
-      padding: 30px;
-      .user-meta {
-        padding-top: 20px;
-        .username {
-          font-size: 18px;
-          font-weight: 600;
-        }
-        .position {
-          font-size: 90%;
-          color: $primary;
-        }
-      }
-    }
+
     .user-bio {
       padding-top: 8px;
       font-size: 92%;
       color: $muted;
     }
-    .action {
-      padding-top: 20px;
       .button {
-        padding: 16px 20px 16px 20px;
         background: $primary;
         border-color: $primary;
         color: white;
         border-radius: 100px;
+        padding: 8px;
         transition: opacity .3s;
         &:hover {
           opacity: 0.7;
         }
       }
-    }
   }
 }
 
