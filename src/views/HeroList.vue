@@ -20,6 +20,9 @@
 
           <button v-if="searchPhraseIsThere" @click="searchByName">Search</button>
       </div>
+      <div v-for="hero in heros" :key="hero.id">
+          {{hero}}
+      </div>
     </div>
 
   </div>
@@ -35,6 +38,7 @@ export default defineComponent({
     return {
       search: '',
       inputIsFocused: false,
+      heros: [],
     };
   },
   computed: {
@@ -48,7 +52,10 @@ export default defineComponent({
 
   methods: {
     async searchByName() {
-      console.log(await HerosApi.getHeroByName(this.search));
+      const response = await HerosApi.getHeroByName(this.search);
+      console.log(response);
+      this.heros = response.results;
+      this.search = '';
     },
     flipFocus() {
       this.inputIsFocused = !this.inputIsFocused;

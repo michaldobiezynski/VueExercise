@@ -10,15 +10,15 @@ interface IHeroApiData {
 export default abstract class HerosApi {
   private static herosAxios = axios.create();
 
-  static async getHeroByName(name: string): Promise<IHeroApiData> {
+  static async getHeroByName(name: string): Promise<any> {
     const url = `https://www.superheroapi.com/api.php/215408507339111/search/${name}`;
-    const { data } = await (await this.herosAxios.get<IHeroApiData>(url));
+    const { data } = await (await this.herosAxios.get<any>(url));
     return data;
   }
 
-  static async getHeroById(id: string): Promise<IHero> {
+  static async getHeroById(id: string): Promise<any> {
     const url = `https://www.superheroapi.com/api.php/215408507339111/${id}`;
-    const { data } = await (await this.herosAxios.get<IHero>(url));
+    const { data } = await (await this.herosAxios.get<any>(url));
     return data;
   }
 }
