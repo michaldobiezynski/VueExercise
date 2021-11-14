@@ -1,6 +1,7 @@
 <template>
   <div id="main-container">
     <div id="friends-list">
+      <HeroListItem />
 
       <div id="search-container">
 
@@ -31,9 +32,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import HerosApi from '@/models/HeroApi';
+import HeroListItem from '@/components/HeroListItem.vue';
 
 export default defineComponent({
   name: 'HeroList',
+  components: { HeroListItem },
   data() {
     return {
       search: '',
