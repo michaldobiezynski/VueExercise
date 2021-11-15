@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faSearch,
   faChevronDown,
+  faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import App from './App.vue';
 import './registerServiceWorker';
@@ -12,6 +13,7 @@ import store from './store';
 
 library.add(faSearch);
 library.add(faChevronDown);
+library.add(faPlus);
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router)
   .mount('#app');

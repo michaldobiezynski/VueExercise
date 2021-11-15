@@ -1,20 +1,21 @@
 <template>
   <div class="container">
-<div class="search-container" >
-  <input v-model="search" type="text" placeholder="Search..." name="search">
-  <button @click="searchByName">  <font-awesome-icon
-            class="fas fa-sm search-icon"
-            icon="search"
-          /></button>
-</div>
-<div v-for="hero in heros" :key="hero.id">
-        <div style="margin: 48px;">
-
-                <HeroListItem v-if="hero" :hero="hero"/>
-        </div>
-
+    <div class="search-container">
+      <input
+        v-model="search"
+        type="text"
+        placeholder="Search..."
+        name="search"
+      />
+      <button @click="searchByName">
+        <font-awesome-icon class="fas fa-sm search-icon" icon="search" />
+      </button>
+    </div>
+    <div v-for="hero in heros" :key="hero.id">
+      <div class="hero-item-container">
+        <HeroListItem v-if="hero" :hero="hero" />
       </div>
-
+    </div>
   </div>
 </template>
 
@@ -54,8 +55,16 @@ export default defineComponent({
   width: 50%;
 }
 
+.hero-item-container {
+  margin: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Style the search field */
-.search-container input[type=text] {
+.search-container input[type='text'] {
   padding: 10px;
   font-size: 17px;
   border: 1px solid grey;
@@ -69,7 +78,7 @@ export default defineComponent({
   float: left;
   width: 20%;
   padding: 10px;
-  background: #2196F3;
+  background: #2196f3;
   color: white;
   font-size: 17px;
   border: 1px solid grey;
@@ -83,10 +92,9 @@ export default defineComponent({
 
 /* Clear floats */
 .search-container::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
   width: 100%;
 }
-
 </style>

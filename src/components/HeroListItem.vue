@@ -4,10 +4,13 @@
       <div class="header">
         <img :src="hero.image.url" alt="" />
       </div>
+      <font-awesome-icon
+        v-if="!inputIsFocused"
+        class="fas fa-sm expand-icon"
+        icon="plus"
+      />
       <div>
-        <h5 style="text-align: left; margin-left: 16px; margin-top: 32px">
-          Name
-        </h5>
+        <h5 style="text-align: left; margin-left: 16px">Name</h5>
         <h3 class="hero-details">{{ hero.name }}</h3>
         <h5 style="text-align: left; margin-left: 16px">Full name</h5>
         <h3 class="hero-details">{{ fullName }}</h3>
@@ -17,11 +20,6 @@
         <button class="button">View profile</button>
       </div>
     </div>
-    <font-awesome-icon
-      v-if="!inputIsFocused"
-      class="fas fa-sm expand-icon"
-      icon="chevron-down"
-    />
   </div>
 </template>
 
@@ -118,17 +116,11 @@ h5 {
   height: 50px;
   border-radius: 50%;
   background: $primary;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: all 0.4s;
+  margin-top: 40px;
   img {
     width: 32px;
     height: 32px;
-    display: block;
   }
   &:hover {
     transform: scale(1.1) rotate(360deg);
