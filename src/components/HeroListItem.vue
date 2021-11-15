@@ -1,30 +1,31 @@
 <template>
-<div class="section">
-        <div class="card">
-          <div class="header">
-              <img :src="hero.image.url" alt="">
-          </div>
-            <div>
-              <h5 style="text-align: left; margin-left: 16px; margin-top: 32px;">Name</h5>
-              <h3 class="hero-details">{{ hero.name }}</h3>
-              <h5 style="text-align: left; margin-left: 16px;">Full name</h5>
-              <h3 class="hero-details">{{ fullName }}</h3>
-              <h5 style="text-align: left; margin-left: 16px;">Occupation</h5>
-              <h5 class="hero-details">{{ hero.work.occupation }}</h5>
+  <div class="section">
+    <div class="card">
+      <div class="header">
+        <img :src="hero.image.url" alt="" />
+      </div>
+      <div>
+        <h5 style="text-align: left; margin-left: 16px; margin-top: 32px">
+          Name
+        </h5>
+        <h3 class="hero-details">{{ hero.name }}</h3>
+        <h5 style="text-align: left; margin-left: 16px">Full name</h5>
+        <h3 class="hero-details">{{ fullName }}</h3>
+        <h5 style="text-align: left; margin-left: 16px">Occupation</h5>
+        <h5 class="hero-details">{{ hero.work.occupation }}</h5>
 
-              <button class="button">View profile</button>
-
-          </div>
-        </div>
-          <font-awesome-icon
-            v-if="!inputIsFocused"
-            class="fas fa-sm expand-icon"
-            icon="chevron-down"
-          />
-</div>
+        <button class="button">View profile</button>
+      </div>
+    </div>
+    <font-awesome-icon
+      v-if="!inputIsFocused"
+      class="fas fa-sm expand-icon"
+      icon="chevron-down"
+    />
+  </div>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
 import { defineComponent } from 'vue';
 import { IHero } from '@/models/IHero';
 
@@ -48,10 +49,10 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-$primary: #7F00FF;
-$secondary: #00D1B2;
+<!-- Add 'scoped' attribute to limit CSS to this component only -->
+<style scoped lang='scss'>
+$primary: #7f00ff;
+$secondary: #00d1b2;
 $section: transparent;
 $muted: #999;
 
@@ -73,7 +74,7 @@ h5 {
   position: relative;
   .card {
     border-radius: 6px;
-    overflow:hidden;
+    overflow: hidden;
     max-height: 100%;
     width: 300px;
     margin: 0 auto;
@@ -84,13 +85,13 @@ h5 {
       display: flex;
       align-content: center;
       justify-content: center;
-        img {
-          width: 150px;
-          height: 150px;
-          display: block;
-          border-radius: 50%;
-          border: 4px solid white;
-        }
+      img {
+        width: 150px;
+        height: 150px;
+        display: block;
+        border-radius: 50%;
+        border: 4px solid white;
+      }
     }
 
     .user-bio {
@@ -98,17 +99,17 @@ h5 {
       font-size: 92%;
       color: $muted;
     }
-      .button {
-        background: $primary;
-        border-color: $primary;
-        color: white;
-        border-radius: 100px;
-        padding: 8px;
-        transition: opacity .3s;
-        &:hover {
-          opacity: 0.7;
-        }
+    .button {
+      background: $primary;
+      border-color: $primary;
+      color: white;
+      border-radius: 100px;
+      padding: 8px;
+      transition: opacity 0.3s;
+      &:hover {
+        opacity: 0.7;
       }
+    }
   }
 }
 
@@ -118,12 +119,12 @@ h5 {
   border-radius: 50%;
   background: $primary;
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all .4s;
+  transition: all 0.4s;
   img {
     width: 32px;
     height: 32px;
