@@ -39,6 +39,10 @@ export default defineComponent({
     };
   },
 
+  methods: {
+    // this.$router.push({ path: 'register', query: { plan: 'private' } })
+  },
+
   mounted() {
     console.log('hero', this.hero);
     this.fullName = this.hero?.biography['full-name'] ?? '';
