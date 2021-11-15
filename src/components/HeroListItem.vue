@@ -1,6 +1,5 @@
 <template>
 <div class="section">
-      <div class="column">
         <div class="card">
           <div class="header">
               <img :src="hero.image.url" alt="">
@@ -17,7 +16,6 @@
 
           </div>
         </div>
-      </div>
           <font-awesome-icon
             v-if="!inputIsFocused"
             class="fas fa-sm expand-icon"
@@ -54,7 +52,7 @@ export default defineComponent({
 <style scoped lang="scss">
 $primary: #7F00FF;
 $secondary: #00D1B2;
-$section: #ededed;
+$section: transparent;
 $muted: #999;
 
 h3 {
@@ -71,7 +69,7 @@ h5 {
 .section {
   background-color: $section;
   min-height: 500px;
-  width: 100%;
+  width: 300px;
   position: relative;
   .card {
     border-radius: 6px;
@@ -79,6 +77,7 @@ h5 {
     max-height: 100%;
     width: 300px;
     margin: 0 auto;
+    background-color: chartreuse;
     .header {
       height: 120px;
       background: $primary;

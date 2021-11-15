@@ -51,7 +51,7 @@ export default defineComponent({
 }
 
 .container {
-  box-sizing: border-box;
+  width: 50%;
 }
 
 /* Style the search field */
@@ -86,5 +86,7 @@ export default defineComponent({
   content: "";
   clear: both;
   display: table;
+  width: 100%;
 }
+
 </style>
