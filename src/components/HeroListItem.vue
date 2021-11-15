@@ -4,11 +4,7 @@
       <div class="header">
         <img :src="hero.image.url" alt="" />
       </div>
-      <font-awesome-icon
-        v-if="!inputIsFocused"
-        class="fas fa-sm expand-icon"
-        icon="plus"
-      />
+      <font-awesome-icon class="fas fa-sm expand-icon" icon="plus" />
       <div>
         <h5 style="text-align: left; margin-left: 16px">Name</h5>
         <h3 class="hero-details">{{ hero.name }}</h3>
@@ -17,7 +13,22 @@
         <h5 style="text-align: left; margin-left: 16px">Occupation</h5>
         <h5 class="hero-details">{{ hero.work.occupation }}</h5>
 
-        <button class="button">View profile</button>
+        <button @click="showMoreClick" class="button">
+          {{ showMoreButtonText }}
+        </button>
+        <div v-if="showMore">
+          <h5 style="text-align: left; margin-left: 16px">Power stats</h5>
+
+          <table style="width: 100%">
+            <tr
+              v-for="[key, value] of Object.entries(hero.powerstats)"
+              :key="key"
+            >
+              <th>{{ key }}</th>
+              <td>{{ value }}</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -36,10 +47,21 @@ export default defineComponent({
   data() {
     return {
       fullName: '',
+      showMore: false,
+      showMoreButtonText: 'Show more',
     };
   },
 
   methods: {
+    showMoreClick() {
+      if (this.showMore) {
+        this.showMore = false;
+        this.showMoreButtonText = 'Show less';
+      } else {
+        this.showMore = true;
+        this.showMoreButtonText = 'Show more';
+      }
+    },
     // this.$router.push({ path: 'register', query: { plan: 'private' } })
   },
 
@@ -71,7 +93,6 @@ h5 {
 
 .section {
   background-color: $section;
-  min-height: 500px;
   width: 300px;
   position: relative;
   .card {
