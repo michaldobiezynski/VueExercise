@@ -1,11 +1,42 @@
 <template>
-  <router-view/>
+  <router-view />
 </template>
 
 <style lang='scss'>
 body {
-  padding: 0;
-  margin: 0;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  background-image: url('https://images4.alphacoders.com/108/108584.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-animation: backgroundScroll 30s linear 1;
+  -webkit-animation-fill-mode: both;
+  animation: backgroundScroll linear 30s 1;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  -webkit-animation-direction: alternate-reverse;
+}
+
+@keyframes backgroundScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200px 0px;
+  }
+}
+
+@-webkit-keyframes backgroundScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200px 0px;
+  }
 }
 
 #app {
@@ -14,32 +45,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#app {
-    box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 5s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 #nav {
