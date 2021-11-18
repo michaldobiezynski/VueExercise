@@ -6,18 +6,18 @@
       </div>
       <font-awesome-icon class="fas fa-sm expand-icon" icon="plus" />
       <div>
-        <h5 style="text-align: left; margin-left: 16px">Name</h5>
+        <h5>Name</h5>
         <h3 class="hero-details">{{ hero.name }}</h3>
-        <h5 style="text-align: left; margin-left: 16px">Full name</h5>
+        <h5>Full name</h5>
         <h3 class="hero-details">{{ fullName }}</h3>
-        <h5 style="text-align: left; margin-left: 16px">Occupation</h5>
+        <h5>Occupation</h5>
         <h5 class="hero-details">{{ hero.work.occupation }}</h5>
 
         <button @click="showMoreClick" class="button">
           {{ showMoreButtonText }}
         </button>
         <div v-if="showMore">
-          <h5 style="text-align: left; margin-left: 16px">Power stats</h5>
+          <h5>Power stats</h5>
 
           <table style="width: 100%">
             <tr
@@ -41,7 +41,6 @@ import { IHero } from '@/models/IHero';
 export default defineComponent({
   name: 'HeroListItem',
   props: {
-    msg: String,
     hero: Object as () => IHero,
   },
   data() {
@@ -49,6 +48,7 @@ export default defineComponent({
       fullName: '',
       showMore: false,
       showMoreButtonText: 'Show more',
+      showMoreButtonColor: '#7f00ff',
     };
   },
 
@@ -57,23 +57,21 @@ export default defineComponent({
       if (this.showMore) {
         this.showMore = false;
         this.showMoreButtonText = 'Show less';
+        this.showMoreButtonColor = '#7f00ff';
       } else {
         this.showMore = true;
         this.showMoreButtonText = 'Show more';
+        this.showMoreButtonColor = '#00d1b2';
       }
     },
-    // this.$router.push({ path: 'register', query: { plan: 'private' } })
   },
 
   mounted() {
-    console.log('hero', this.hero);
     this.fullName = this.hero?.biography['full-name'] ?? '';
-    console.log('hero.biography.full-name', this.hero?.biography['full-name']);
   },
 });
 </script>
 
-<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped lang='scss'>
 $primary: #7f00ff;
 $secondary: #00d1b2;
@@ -85,6 +83,8 @@ h3 {
 }
 h5 {
   padding-top: 0;
+  text-align: left;
+  margin-left: 16px;
 }
 
 .hero-details {
@@ -123,8 +123,8 @@ h5 {
       color: $muted;
     }
     .button {
-      background: $primary;
-      border-color: $primary;
+      background: v-bind(showMoreButtonColor);
+      border-color: v-bind(showMoreButtonColor);
       color: white;
       border-radius: 100px;
       padding: 8px;

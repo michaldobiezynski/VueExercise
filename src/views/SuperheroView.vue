@@ -52,7 +52,7 @@ export default defineComponent({
 }
 
 .container {
-  width: 50%;
+  width: 100%;
 }
 
 .hero-item-container {

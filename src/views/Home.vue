@@ -1,56 +1,21 @@
 <template>
   <div class="Home">
     <h1><a href="https://superheroapi.com/">SuperHero API</a></h1>
-    <form>
-      <input
-        :value="superHeroName"
-        id="superhero-name"
-        name="superhero-name"
-        placeholder="Enter Superhero Name"
-        autoComplete="off"
-      />
-      <button type="submit" @click="(e) => this.submitHandler(e)">Go</button>
-    </form>
+
+    <button @click="() => $router.push('superhero')">Go to search</button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HerosApi from '@/models/HeroApi';
 
 export default defineComponent({
   name: 'Home',
-  components: {},
-  data() {
-    return {
-      superHeroName: '',
-    };
-  },
-  async mounted() {
-    console.log(await HerosApi.getHeroById('69'));
-  },
 });
 </script>
 <style  scoped>
 .Home {
   text-align: center;
-}
-
-.Reference {
-  display: inline-block;
-  color: 'white';
-  margin-left: '20px';
-  font-weight: 'bold';
-  background-color: rgb(0, 0, 0, 0.8);
-  border-radius: 5px;
-  color: #fff;
-  padding: 5px;
-  margin-left: 5px;
-  font-size: 13px;
-}
-
-.Reference > a {
-  color: greenyellow;
 }
 
 .Home > h1 {
@@ -71,25 +36,7 @@ export default defineComponent({
   cursor: pointer;
 }
 
-.Home > form > input {
-  margin-bottom: 20px;
-  padding: 5px 10px;
-  font-size: 1.2rem;
-  border: 1px solid grey;
-  border-radius: 5px;
-  color: rgb(40, 15, 63);
-  outline: none;
-  font-family: 'Orbitron';
-  font-weight: bold;
-}
-
-.Home > form > input:focus {
-  border: 1.2px solid blueviolet;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.Home > form > button {
+.Home > button {
   margin: 10px 10px;
   padding: 10px 20px;
   border-style: none;
@@ -100,47 +47,18 @@ export default defineComponent({
   color: cornsilk;
 }
 
-.Home > form > button:hover {
+.Home > button:hover {
   background-color: orangered;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.Home > form > button:focus {
+.Home > button:focus {
   outline: none;
-}
-
-.LoadButton {
-  padding: 10px 20px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  border-style: none;
-  background-color: darkorange;
-  color: cornsilk;
-  border-radius: 3px;
-  cursor: pointer;
-  font-weight: bold;
-  outline: none;
-}
-
-.LoadButton:hover {
-  background-color: orangered;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 600px) {
   .Home > h1 {
     font-size: 1.5rem;
   }
-}
-
-.load {
-  display: flex;
-  justify-content: center;
-  font-size: 2rem;
-  color: #ae25c0;
-  padding: 1rem;
-  margin-right: 90px;
-  font: 60px 'permanent marker';
-  text-shadow: 6px 6px 6px black;
 }
 </style>
